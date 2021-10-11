@@ -6,7 +6,7 @@ import { InputButton } from './buttons/InputButton'
 import { OperatorButton } from './buttons/OperatorButton'
 import { FaDivide, FaMinus, FaPlay, FaPlus, FaSquareRootAlt, FaTimes } from 'react-icons/fa'
 
-export const ButtonGrid = ({ appendInput, setToggleEquals, setNegative, setOperatorRoutine}) => {
+export const ButtonGrid = ({ allClear, appendInput, clear, setToggleEquals, setOperator, toggleNegative}) => {
 
     return (
         <div className="button-grid">
@@ -18,9 +18,9 @@ export const ButtonGrid = ({ appendInput, setToggleEquals, setNegative, setOpera
 
                 {/* row 2 */}
                 <span/>
-                <Button className="top-grey" colour="grey" location="top" text="OFF"/>
+                <Button colour="grey" location="top" text="OFF"/>
                 <span/>
-                <Button colour="grey" location="top" text={<FaSquareRootAlt/>}/>
+                <OperatorButton argument="square-root" location="top" setOperator={setOperator} text={<FaSquareRootAlt/>}/>
                 <Button colour="grey" location="top" text={<FaPlay/>}/>
                 <Button colour="blue" location="top" text="TAX-"/>
                 <span/>
@@ -37,7 +37,7 @@ export const ButtonGrid = ({ appendInput, setToggleEquals, setNegative, setOpera
                 <Button colour="grey" location="main" text="M+"/>
                 <Button colour="grey" location="main" text="%"/>
                 <span/>
-                <OperatorButton argument="divide" setOperator={setOperatorRoutine} text={<FaDivide/>}/>
+                <OperatorButton argument="divide" setOperator={setOperator} text={<FaDivide/>}/>
 
                 {/* row 5 */}
                 <span/>
@@ -47,32 +47,32 @@ export const ButtonGrid = ({ appendInput, setToggleEquals, setNegative, setOpera
                 <InputButton colour="dark-grey" appendInput={appendInput} location="main" text="8"/>
                 <InputButton colour="dark-grey" appendInput={appendInput} location="main" text="9"/>
                 <span/>
-                <OperatorButton argument="times" setOperator={setOperatorRoutine} text={<FaTimes/>}/>
+                <OperatorButton argument="times" setOperator={setOperator} text={<FaTimes/>}/>
 
                 {/* row 6 */}
                 <span/>
-                <Button colour="grey" handleToggle={setOperatorRoutine} location="main" text="+/-"/>
+                <Button colour="grey" handleClick={toggleNegative} location="main" text="+/-"/>
                 <span/>
                 <InputButton colour="dark-grey" appendInput={appendInput} location="main" text="4"/>
                 <InputButton colour="dark-grey" appendInput={appendInput} location="main" text="5"/>
                 <InputButton colour="dark-grey" appendInput={appendInput} location="main" text="6"/>
                 <span/>
-                <OperatorButton argument="minus" setOperator={setOperatorRoutine} text={<FaMinus/>}/>
+                <OperatorButton argument="minus" setOperator={setOperator} text={<FaMinus/>}/>
 
                 {/* row 7 */}
                 <span/>
-                <Button colour="orange" location="main" text="C"/>
+                <Button colour="orange" handleClick={clear} location="main" text="C"/>
                 <span/>
                 <InputButton colour="dark-grey" appendInput={appendInput} location="main" text="1"/>
                 <InputButton colour="dark-grey" appendInput={appendInput} location="main" text="2"/>
                 <InputButton colour="dark-grey" appendInput={appendInput} location="main" text="3"/>
                 <span/>
-                <OperatorButton argument="add" setOperator={setOperatorRoutine} text={<FaPlus/>}/>
+                <OperatorButton argument="add" setOperator={setOperator} text={<FaPlus/>}/>
 
                 {/* row 8 */}
                 <span className="button-grid__label button-grid__label-side">ON</span>
                 {/* <span/> */}
-                <Button colour="orange" location="main" text="AC"/>
+                <Button colour="orange" handleClick={allClear} location="main" text="AC"/>
                 <span/>
                 <InputButton colour="dark-grey" appendInput={appendInput} text="0"/>
                 <InputButton colour="dark-grey" appendInput={appendInput} location="main" text="."/>

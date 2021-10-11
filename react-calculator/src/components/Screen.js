@@ -30,7 +30,7 @@ export const Screen = ({ currency, exchange, input, operator, negative }) => {
 
     return (
         <div className="screen">
-            <span className="screen__negative screen__text">{!negative && <FaMinus/>}</span>
+            <span className="screen__negative screen__text">{negative && <FaMinus/>}</span>
             <span className="screen__operator screen__text">{operatorSymbol}</span>
             <span className="screen__number-display">{input}</span>
         </div>
