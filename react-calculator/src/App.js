@@ -22,8 +22,10 @@ function App() {
 
   useEffect(() => {
     if (toggleEquals && firstNumber && input) {
-      console.log("second number current: ", secondNumberRef.current)
-      setInput(calculate());
+      console.log("second number current: ", secondNumberRef.current);
+
+      const total = format(calculate());
+      setInput(total);
       setToggleEquals(false);
       setFirstNumber(null);
       setOperator(null);
@@ -36,6 +38,14 @@ function App() {
       setInput(null);
     }
   }, [operator])
+
+  const format = (total) => {
+    if (total.toString().length > 8) {
+      const length = total.toExponential().length;
+      return total.toExponential(length > 5 ? 5 : length);
+    }
+    return total;
+  }
 
   const appendInput = async (value) => {
     // the operator has just been pressed
@@ -62,7 +72,6 @@ function App() {
     console.log("first number as float ", firstNumberAsFloat);
     console.log("second number as float: ", secondNumberAsFloat);
     console.log("operator: ", operator)
-
 
     switch (operator) {
       case 'add': {
