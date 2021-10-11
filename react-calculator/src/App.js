@@ -27,17 +27,15 @@ function App() {
       setToggleEquals(false);
       setFirstNumber(null);
       setOperator(null);
-    } else if (toggleEquals && firstNumber && !input) {
-      setSecondNumber(firstNumber);
-      setInput(calculate());
-      setOperator(null);
-    }
+    } 
+  }, [toggleEquals])
 
+  useEffect(() => {
     if (operator && !firstNumber) {
       setFirstNumber(input);
       setInput(null);
     }
-  })
+  }, [operator])
 
   const appendInput = async (value) => {
     // the operator has just been pressed
@@ -78,6 +76,9 @@ function App() {
       }
       case 'divide': {
         return firstNumberAsFloat / secondNumberAsFloat;
+      }
+      default: {
+        return null;
       }
     }
   }
