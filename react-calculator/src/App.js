@@ -38,7 +38,7 @@ function App() {
     } else if (operator && !firstNumber) {
       setFirstNumber(input);
       setInput(null);
-    }
+    } 
 
     setNegative(false);
   }, [operator])
